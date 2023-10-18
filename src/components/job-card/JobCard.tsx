@@ -28,7 +28,7 @@ const JobCard = ({ job }: JobCardProps) => {
       } bg-white sm:flex justify-between items-center rounded-[0.3125rem] py-8 px-10 sm:flex-col lg:flex-row relative`}
     >
       <div className="job-card__job-details | flex gap-6">
-        <img src={job.logo} alt={job.company} className="absolute -top-6 w-12 h-12" />
+        <img src={job.logo} alt={job.company} className="absolute -top-6 w-12 h-12 md:static md:w-[5.5rem] md:h-[5.5rem]" />
         <div>
           <div className="flex gap-2 items-center">
             <span className="text-[0.8125rem] md:text-lg font-bold text-custom_green_600">{job.company}</span>
@@ -50,19 +50,19 @@ const JobCard = ({ job }: JobCardProps) => {
       <div className="job-card__filters | border-t-custom_grey_100 border-t-[1px] pt-4 md:border-none">
         <ul className="flex gap-4 flex-wrap">
           <li>
-            <FilterLabel text={job.role} />
+            <FilterLabel text={job.role} hasCancelIcon={false} />
           </li>
           <li>
-            <FilterLabel text={job.level} />
+            <FilterLabel text={job.level} hasCancelIcon={false} />
           </li>
           {job.languages.map((language, index) => (
             <li key={index}>
-              <FilterLabel text={language} />
+              <FilterLabel text={language} hasCancelIcon={false} />
             </li>
           ))}
           {job.tools.map((tool, index) => (
             <li key={index}>
-              <FilterLabel text={tool} />
+              <FilterLabel text={tool} hasCancelIcon={false} />
             </li>
           ))}
         </ul>

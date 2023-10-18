@@ -10,6 +10,9 @@ export default {
         custom_grey_100: 'hsla(180, 10%, 74%, 1)',
         custom_grey_300: 'hsla(180, 8%, 52%, 1)',
       },
+      width: {
+        container: '66.375rem',
+      },
       maxWidth: {
         container: '69.375rem',
       },
