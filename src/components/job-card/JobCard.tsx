@@ -20,46 +20,51 @@ interface JobCardProps {
   job: Job;
   filters: string[];
   setFilters: (filters: string[]) => void;
+  filterLabels: string[];
 }
 
-const JobCard = ({ job, filters, setFilters }: JobCardProps) => {
-  const filterLabels = [job.role, job.level, ...job.languages, ...job.tools];
+const JobCard = ({ job, filters, setFilters, filterLabels }: JobCardProps) => {
+  const addFilterToFilterArray = (filter: string) => {
+    if (!filters.includes(filter)) {
+      setFilters((prevFilters) => [...prevFilters, filter]);
+    }
+  };
 
   return (
     <div
       className={`job-card ${
         job.featured ? 'border-l-custom_green_600 border-l-[0.3125rem]' : ''
-      } bg-white sm:flex justify-between items-center rounded-[0.3125rem] py-8 px-10 sm:flex-col lg:flex-row relative`}
+      } bg-white md:flex justify-between items-center rounded-[0.3125rem] py-8 px-10 lg:flex-row relative`}
     >
       <div className="job-card__job-details | flex gap-6">
         <img src={job.logo} alt={job.company} className="absolute -top-6 w-12 h-12 md:static md:w-[5.5rem] md:h-[5.5rem]" />
         <div>
-          <div className="flex gap-2 items-center">
+          <div className="flex gap-8 items-center pb-3">
             <span className="text-[0.8125rem] md:text-lg font-bold text-custom_green_600">{job.company}</span>
             <div className="flex gap-2">
-              {job.new && <span className="font-bold bg-custom_green_600 rounded-xl text-white px-2">NEW!</span>}
-              {job.featured && <span className="font-bold bg-custom_green_900 rounded-xl text-white px-2">FEATURED</span>}
+              {job.new && <span className="font-bold bg-custom_green_600 rounded-xl text-white px-2 pt-[2px]">NEW!</span>}
+              {job.featured && <span className="font-bold bg-custom_green_900 rounded-xl text-white px-2 pt-[2px]">FEATURED</span>}
             </div>
           </div>
-          <a href="#" className="text-custom_green_900 hover:text-custom_green_600 duration-200 ease-in font-bold text-[1.375rem]">
-            <h2 className="text-[0.9375rem] md:text-[1.375rem] leading-6 py-2">{job.position}</h2>
+          <a href="#" className="text-custom_green_900 hover:text-custom_green_600 duration-200 ease-in font-bold md:text-[1.375rem] leading-6">
+            {job.position}
           </a>
-          <div className="text-custom_grey_300 flex gap-9 pb-4">
+          <div className="text-custom_grey_300 flex gap-9 pb-4 pt-3 md:pb-0">
             <span className="has-separator relative">{job.postedAt}</span>
             <span className="has-separator relative">{job.contract}</span>
             <span>{job.location}</span>
           </div>
         </div>
       </div>
-      <div className="job-card__filters | border-t-custom_grey_100 border-t-[1px] pt-4 md:border-none">
-        <ul className="flex gap-4 flex-wrap">
+      <div className="job-card__filters | flex border-t-custom_grey_100 border-t-[1px] pt-4 md:border-none">
+        <ul className="flex gap-4 flex-wrap md:justify-end">
           {filterLabels.map((filter, index) => (
             <FilterLabel
               key={index}
               text={filter}
               hasCancelIcon={false}
               onClick={() => {
-                setFilters([...filters, filter]);
+                addFilterToFilterArray(filter);
               }}
             />
           ))}

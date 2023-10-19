@@ -29,3 +29,13 @@ header {
   bottom: 0.2rem;
   right: -1.25rem;
 }
+
+.job-card,
+.searchbar {
+  box-shadow: 0px 15px 20px -5px hsla(189, 82%, 28%, 0.15);
+}
+
+.filter-label:hover .cancel-icon {
+  fill: hsla(180, 14%, 20%, 1);
+  transition: all 0.2s ease-out;
+}
