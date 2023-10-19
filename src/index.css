@@ -10,12 +10,16 @@ body {
 
 header {
   background: url('./assets/images/bg-header-mobile.svg'), hsla(180, 29%, 50%, 1);
+  background-repeat: no-repeat;
+  background-size: cover;
   min-height: 9.75rem;
 }
 
 @media screen and (min-width: 768px) {
   header {
     background: url('./assets/images/bg-header-desktop.svg'), hsla(180, 29%, 50%, 1);
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 }
 

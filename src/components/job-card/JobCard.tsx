@@ -18,9 +18,13 @@ interface Job {
 
 interface JobCardProps {
   job: Job;
+  filters: string[];
+  setFilters: (filters: string[]) => void;
 }
 
-const JobCard = ({ job }: JobCardProps) => {
+const JobCard = ({ job, filters, setFilters }: JobCardProps) => {
+  const filterLabels = [job.role, job.level, ...job.languages, ...job.tools];
+
   return (
     <div
       className={`job-card ${
@@ -49,21 +53,15 @@ const JobCard = ({ job }: JobCardProps) => {
       </div>
       <div className="job-card__filters | border-t-custom_grey_100 border-t-[1px] pt-4 md:border-none">
         <ul className="flex gap-4 flex-wrap">
-          <li>
-            <FilterLabel text={job.role} hasCancelIcon={false} />
-          </li>
-          <li>
-            <FilterLabel text={job.level} hasCancelIcon={false} />
-          </li>
-          {job.languages.map((language, index) => (
-            <li key={index}>
-              <FilterLabel text={language} hasCancelIcon={false} />
-            </li>
-          ))}
-          {job.tools.map((tool, index) => (
-            <li key={index}>
-              <FilterLabel text={tool} hasCancelIcon={false} />
-            </li>
+          {filterLabels.map((filter, index) => (
+            <FilterLabel
+              key={index}
+              text={filter}
+              hasCancelIcon={false}
+              onClick={() => {
+                setFilters([...filters, filter]);
+              }}
+            />
           ))}
         </ul>
       </div>

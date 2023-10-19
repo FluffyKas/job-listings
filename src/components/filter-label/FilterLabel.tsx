@@ -4,12 +4,14 @@ interface FilterLabelProps {
   text: string;
   index?: number;
   hasCancelIcon: boolean;
+  onClick?: () => void;
 }
 
-const FilterLabel = ({ text, index, hasCancelIcon }: FilterLabelProps) => {
+const FilterLabel = ({ text, index, hasCancelIcon, onClick }: FilterLabelProps) => {
   return (
     <div className="flex">
       <button
+        onClick={onClick}
         key={index}
         className={`job-card ${
           hasCancelIcon ? 'rounded-l-[0.25rem]' : 'rounded-[0.25rem]'
