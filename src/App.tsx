@@ -10,7 +10,6 @@ function App() {
   useEffect(() => {
     const filterJobs = () => {
       const newFilteredJobs = data.filter((job) => {
-        // Check if all filter values are present in the job details
         return filters.every((filter) => {
           return job.role.includes(filter) || job.level.includes(filter) || job.languages.includes(filter) || job.tools.includes(filter);
         });
