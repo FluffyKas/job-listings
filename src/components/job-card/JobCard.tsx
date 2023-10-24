@@ -19,7 +19,7 @@ interface Job {
 interface JobCardProps {
   job: Job;
   filters: string[];
-  setFilters: (filters: string[]) => void;
+  setFilters: React.Dispatch<React.SetStateAction<string[]>>;
   filterLabels: string[];
 }
 
