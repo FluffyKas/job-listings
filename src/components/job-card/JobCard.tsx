@@ -57,7 +57,7 @@ const JobCard = ({ job, filters, setFilters, filterLabels }: JobCardProps) => {
         </div>
       </div>
       <div className="job-card__filters | flex border-t-custom_grey_100 border-t-[1px] pt-4 md:border-none">
-        <ul className="flex gap-4 flex-wrap md:justify-end">
+        <div className="flex gap-4 flex-wrap md:justify-end">
           {filterLabels.map((filter, index) => (
             <FilterLabel
               key={index}
@@ -68,7 +68,7 @@ const JobCard = ({ job, filters, setFilters, filterLabels }: JobCardProps) => {
               }}
             />
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   );
